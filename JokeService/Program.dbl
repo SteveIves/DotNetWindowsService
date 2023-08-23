@@ -17,8 +17,8 @@ proc
     begin
         LoggerProviderOptions.RegisterProviderOptions<EventLogSettings, EventLogLoggerProvider>(services)
 
-        services.AddSingleton<JokeService>()
-        services.AddHostedService<WindowsBackgroundService>()
+        services.AddSingleton<JokeProvider>()
+        services.AddHostedService<JokeService>()
 
         lambda loggingConfiguration(builder)
         begin

@@ -1,0 +1,64 @@
+
+import System.Collections.Generic
+import System.Linq
+
+namespace JokeService
+
+    ;;; <summary>
+    ;;; This class is responsible for producing a random joke on request.
+    ;;; It is instantiated in the main program and registered with the dependency injection provider
+    ;;; and provided to JokeBackgroundService via dependency injection.
+    ;;; </summary>
+    public class JokeProvider
+
+        ;;; <summary>
+        ;;; Represents a joke
+        ;;; </summary>
+        class Joke
+            public readwrite property Setup, string
+            public readwrite property Punchline, string
+        endclass
+
+        ;;; <summary>
+        ;;; Produce a random joke
+        ;;; </summary>
+        ;;; <returns>Retuens a string containing two lines of text containing the joke setup and punch line.</returns>
+        public method GetJoke, string
+        proc
+            data theJoke = jokes.ElementAt(Random.Shared.Next(jokes.Count))
+            mreturn String.Format("{0}{1}{2}",theJoke.Setup,Environment.NewLine,theJoke.Punchline)
+        endmethod
+
+        ; Programming jokes borrowed from:
+        ; https://github.com/eklavyadev/karljoke/blob/main/source/jokes.json
+
+        private jokes, @HashSet<Joke>, new HashSet<Joke>()
+        & {
+        &    new Joke() { Setup="What's the best thing about a Boolean?", Punchline="Even if you're wrong, you're only off by a bit." },
+        &    new Joke() { Setup="What's the object-oriented way to become wealthy?", Punchline="Inheritance" },
+        &    new Joke() { Setup="Why did the programmer quit their job?", Punchline="Because they didn't get arrays." },
+        &    new Joke() { Setup="Why do programmers always mix up Halloween and Christmas?", Punchline="Because Oct 31 == Dec 25" },
+        &    new Joke() { Setup="How many programmers does it take to change a lightbulb?", Punchline="None that's a hardware problem" },
+        &    new Joke() { Setup="If you put a million monkeys at a million keyboards, one of them will eventually write a Java program", Punchline="the rest of them will write Perl" },
+        &    new Joke() { Setup="['hip','hip']", Punchline="(hip hip array)" },
+        &    new Joke() { Setup="To understand what recursion is...", Punchline="You must first understand what recursion is" },
+        &    new Joke() { Setup="There are 10 types of people in this world...", Punchline="Those who understand binary and those who don't" },
+        &    new Joke() { Setup="Which song would an exception sing?", Punchline="Can't catch me - Avicii" },
+        &    new Joke() { Setup="Why do Java programmers wear glasses?", Punchline="Because they don't C#" },
+        &    new Joke() { Setup="How do you check if a webpage is HTML5?", Punchline="Try it out in Internet Explorer" },
+        &    new Joke() { Setup="A user interface is like a joke.", Punchline="If you have to explain it then it is not that good." },
+        &    new Joke() { Setup="I was gonna tell you a joke about UDP...", Punchline="...but you might not get it." },
+        &    new Joke() { Setup="The punchline often arrives before the set-up.", Punchline="Do you know the problem with UDP jokes?" },
+        &    new Joke() { Setup="Why do C# and Java developers keep breaking their keyboards?", Punchline="Because they use a strongly typed language." },
+        &    new Joke() { Setup="Knock-knock.", Punchline="A race condition. Who is there?" },
+        &    new Joke() { Setup="What's the best part about TCP jokes?", Punchline="I get to keep telling them until you get them." },
+        &    new Joke() { Setup="A programmer puts two glasses on their bedside table before going to sleep.", Punchline="A full one, in case they get thirsty, and an empty one in case they don't." },
+        &    new Joke() { Setup="There are 10 kinds of people in this world.", Punchline="Those who understand binary, those who don't, and those who weren't expecting a base 3 joke." },
+        &    new Joke() { Setup="What did the router say to the doctor?", Punchline="It hurts when IP." },
+        &    new Joke() { Setup="An IPv6 packet is walking out of the house.", Punchline="He goes nowhere." },
+        &    new Joke() { Setup="3 SQL statements walk into a NoSQL bar. Soon, they walk out", Punchline="They couldn't find a table." }
+        & }
+    
+    endclass
+
+endnamespace
