@@ -42,6 +42,7 @@ namespace JokeService
         proc
             try
             begin
+                ;Main processing loop
                 while (!token.IsCancellationRequested)
                 begin
                     mLogger.LogWarning("{Joke}", mJokeProvider.GetJoke())
