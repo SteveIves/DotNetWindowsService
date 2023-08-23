@@ -13,8 +13,6 @@ If you run the code locally from Visual Studio it will run as a regular console 
 will log to the console window instead of the event log.
 
 You can register a Windows service using the 
-[SC Utility](https://learn.microsoft.com/en-us/windows/win32/services/configuring-a-service-using-sc) 
-from the [Windows SDK](https://developer.microsoft.com/en-us/windows/downloads/windows-sdk).
 
 ## Publishing the Application
 
@@ -33,9 +31,13 @@ JokeService project folder and execute `PUBLISH.BAT`. You should see output simi
 
 ## Registering and Starting the Service
 
-To register and start the application as a Windows Service you can use the SC utility
-provided by the Windows SDK. The batch file `REGISTER.BAT` contains examples of the
-necessary commands. Execute the batch file. You should see output similar to this:
+To register and start the application as a Windows Service you can use the 
+[SC Utility](https://learn.microsoft.com/en-us/windows/win32/services/configuring-a-service-using-sc) 
+from the [Windows SDK](https://developer.microsoft.com/en-us/windows/downloads/windows-sdk).
+The batch file `REGISTER.BAT` contains examples of the necessary commands. The batch file must be
+executed from a command prompt with administrative permissions. When you execute the batch
+file you should see output similar to this:
+
 ```
 Registering JokeService...
 Starting JokeService...
@@ -46,9 +48,10 @@ manage the service.
 
 ## Stopping and Removing the Service
 
-To stop and remove the service you can also use the SC utility. The batch file
+The SC utility can also be used to stop and remove the service. The batch file
 `REMOVE.BAT` contains examples of the necessary commands. Execute the batch file.
 You should see output similar to this:
+
 ```
 Stopping JokeService...
 Removing JokeService...
