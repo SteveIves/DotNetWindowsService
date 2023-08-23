@@ -6,33 +6,42 @@ import Microsoft.Extensions.Logging.Configuration
 import Microsoft.Extensions.Logging
 import Microsoft.Extensions.Logging.EventLog
 
-main
+;;; <summary>
+;;; Main entry point
+;;; </summary>
+main JokeService
 proc
+    ;Configure the Windows Service
     lambda serviceOptions(options)
     begin
         options.ServiceName = "Joke Service"
     end
 
+    ;Configure dependency injection services
     lambda serviceConfiguration(context, services)
     begin
         LoggerProviderOptions.RegisterProviderOptions<EventLogSettings, EventLogLoggerProvider>(services)
 
+        ;Add our JokeProvider and JokeServiceBackgroundWorker services
         services.AddSingleton<JokeProvider>()
         services.AddHostedService<JokeServiceBackgroundWorker>()
 
+        ;Configure the logging service
         lambda loggingConfiguration(builder)
         begin
             builder.AddConfiguration(context.Configuration.GetSection("Logging"))
         end
-        ;;  See: https://github.com/dotnet/runtime/issues/47303
+
+        ;Add the logging service
         services.AddLogging(loggingConfiguration)
     end
 
-    data builder, @IHostBuilder, Host.CreateDefaultBuilder(Environment.GetCommandLineArgs())
+    data hostBuilder, @IHostBuilder, Host.CreateDefaultBuilder(Environment.GetCommandLineArgs())
     &    .UseWindowsService(serviceOptions)
     &    .ConfigureServices(serviceConfiguration)
 
-    data host, @IHost, builder.Build()
+    disposable data host = hostBuilder.Build()
+
     host.Run()
 
 endmain
