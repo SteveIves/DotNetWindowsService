@@ -21,6 +21,7 @@ be published for use and this is done via the `DOTNET PUBLISH` command. The batc
 From Solution Explorer, open a Command Prompt (x64) window and if necessary move to the
 JokeService project folder and execute `PUBLISH.BAT`. You should see output similar to this:
 ```
+  C:\> PUBLISH.BAT
   Determining projects to restore...
   Restored C:\DEV\DotWindowsService\JokeService\JokeService.synproj (in 269 ms).
   JokeService -> C:\DEV\DotWindowsService\JokeService\bin\Release\net6.0-windows\win-x64\JokeService.dll
@@ -37,9 +38,10 @@ executed from a command prompt with administrative permissions. When you execute
 file you should see output similar to this:
 
 ```
-Registering JokeService...
-Starting JokeService...
-Success
+  C:\> REGISTER.BAT
+  Registering JokeService...
+  Starting JokeService...
+  Success
 ```
 Once registered you can also use the Windows Services or Task Manager applications to
 manage the service.
@@ -51,7 +53,8 @@ The SC utility can also be used to stop and remove the service. The batch file
 You should see output similar to this:
 
 ```
-Stopping JokeService...
-Removing JokeService...
-Success
+  C:\> REMOVE.BAT
+  Stopping JokeService...
+  Removing JokeService...
+  Success
 ```
