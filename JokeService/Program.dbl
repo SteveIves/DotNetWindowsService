@@ -1,0 +1,38 @@
+
+import JokeService
+import Microsoft.Extensions.DependencyInjection
+import Microsoft.Extensions.Hosting
+import Microsoft.Extensions.Logging.Configuration
+import Microsoft.Extensions.Logging
+import Microsoft.Extensions.Logging.EventLog
+
+main
+proc
+    lambda serviceOptions(options)
+    begin
+        options.ServiceName = "Joke Service"
+    end
+
+    lambda serviceConfiguration(context, services)
+    begin
+        LoggerProviderOptions.RegisterProviderOptions<EventLogSettings, EventLogLoggerProvider>(services)
+
+        services.AddSingleton<JokeService>()
+        services.AddHostedService<WindowsBackgroundService>()
+
+        lambda loggingConfiguration(builder)
+        begin
+            builder.AddConfiguration(context.Configuration.GetSection("Logging"))
+        end
+        ;;  See: https://github.com/dotnet/runtime/issues/47303
+        services.AddLogging(loggingConfiguration)
+    end
+
+    data builder, @IHostBuilder, Host.CreateDefaultBuilder(Environment.GetCommandLineArgs())
+    &    .UseWindowsService(serviceOptions)
+    &    .ConfigureServices(serviceConfiguration)
+
+    data host, @IHost, builder.Build()
+    host.Run()
+
+endmain

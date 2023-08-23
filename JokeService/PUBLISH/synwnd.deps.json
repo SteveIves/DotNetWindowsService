@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": "netcoreapp6",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    "netcoreapp6": {
+      "synwnd/1.0.0": {
+        "runtime": {
+          "synwnd.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "synwnd/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

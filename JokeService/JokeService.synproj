@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk" DefaultTargets="restore;Build">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework Condition="'$(TargetFrameworkOverride)' == ''">net6.0-windows</TargetFramework>
+    <TargetFramework Condition="'$(TargetFrameworkOverride)' != ''">$(TargetFrameworkOverride)</TargetFramework>
+    <DefaultLanguageSourceExtension>.dbl</DefaultLanguageSourceExtension>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <ProjectGuid>{e1448e0a-dad0-48eb-8353-872f0201ee71}</ProjectGuid>
+    <Name>JokeServiceSN</Name>
+    <UseWindowsForms>True</UseWindowsForms>
+    <RootNamespace>JokeService</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="JokeService.dbl" />
+    <Compile Include="Program.dbl" />
+    <Compile Include="WindowsBackgroundService.dbl" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting">
+      <Version>6.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices">
+      <Version>6.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="Synergex.SynergyDE.Build" Version="23.*" />
+    <PackageReference Include="Synergex.SynergyDE.synrnt" Version="12.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="appsettings.Development.json">
+      <SubType>Content</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="appsettings.json">
+      <SubType>Content</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Properties\launchSettings.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="PUBLISH.BAT">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="REGISTER.BAT">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="REMOVE.BAT">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties" />
+  </ItemGroup>
+</Project>
