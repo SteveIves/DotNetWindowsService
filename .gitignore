@@ -28,6 +28,7 @@
 DotNetCore/distribution
 OutputFiles
 /packages
+/PUBLISH
 
 # Ignore specific files
 

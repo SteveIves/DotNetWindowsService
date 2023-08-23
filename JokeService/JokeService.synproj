@@ -37,15 +37,6 @@
     <Content Include="Properties\launchSettings.json">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="PUBLISH.BAT">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="REGISTER.BAT">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="REMOVE.BAT">
-      <SubType>Content</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties" />
