@@ -12,8 +12,6 @@ When the service is running it writes a random programming joke to the Windows A
 If you run the code locally from Visual Studio it will run as a regular console app and
 will log to the console window instead of the event log.
 
-You can register a Windows service using the 
-
 ## Publishing the Application
 
 To be able to run a .NET application outside of the Visual Studio development environment it must
