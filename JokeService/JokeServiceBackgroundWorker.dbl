@@ -10,20 +10,20 @@ namespace JokeService
     ;;; <summary>
     ;;; This is the main code that executes the functionality of the service.
     ;;; </summary>
-    public sealed class JokeService extends BackgroundService
+    public sealed class JokeServiceBackgroundWorker extends BackgroundService
 
         ;;Utility objects provided via dependency injection
         private mJokeProvider, @JokeProvider
-        private mLogger, @ILogger<JokeService>
+        private mLogger, @ILogger<JokeServiceBackgroundWorker>
 
         ;;; <summary>
         ;;; Constructor. Receives utility objects via dependency injection.
         ;;; </summary>
-        ;;; <param name="jokeService">Joke service instance</param>
-        ;;; <param name="logger">Logger service instance</param>
-        public method JokeService
+        ;;; <param name="aJokeService">Joke service instance</param>
+        ;;; <param name="aLogger">Logger service instance</param>
+        public method JokeServiceBackgroundWorker
             aJokeProvider, @JokeProvider
-            aLogger, @ILogger<JokeService>
+            aLogger, @ILogger<JokeServiceBackgroundWorker>
         proc
             mJokeProvider = aJokeProvider
             mLogger = aLogger
